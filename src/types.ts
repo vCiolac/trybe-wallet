@@ -6,5 +6,11 @@ export type SaveEmail = {
 };
 
 export type RootState = {
-  email: string;
+  user: {
+    email: string,
+  },
+  wallet: {
+    currency: number,
+    total: number,
+  },
 };

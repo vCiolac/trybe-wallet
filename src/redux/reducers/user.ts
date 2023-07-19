@@ -1,10 +1,10 @@
-import { RootState, SAVE_EMAIL, SaveEmail } from '../../types';
+import { SAVE_EMAIL, SaveEmail } from '../../types';
 
-const initialState: RootState = {
+const initialState = {
   email: '',
 };
 
-const user = (state = initialState, action: SaveEmail): RootState => {
+const user = (state = initialState, action: SaveEmail) => {
   switch (action.type) {
     case SAVE_EMAIL:
       return {
