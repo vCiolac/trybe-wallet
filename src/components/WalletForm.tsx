@@ -5,7 +5,6 @@ import { addExpense, fetchData, filteredFetch } from '../redux/actions';
 
 function WalletForm() {
   const dispatch: Dispatch = useDispatch();
-  // const [totalValue, setTotalValue] = useState(0);
   const [input, setInput] = useState<WalletType>({
     value: '',
     description: '',
@@ -26,7 +25,7 @@ function WalletForm() {
       dispatch(filteredFetch());
     };
     fetch();
-  }, []);
+  }, [dispatch]);
 
   const currencies = useSelector((state: RootState) => state.wallet.currencies);
 
@@ -51,16 +50,15 @@ function WalletForm() {
     const data = await fetchData();
     const newExpense = {
       ...input,
-      id: Number(input.value),
+      id: input.value,
       currency: select.currency,
       method: select.method,
       tag: select.tag,
       exchangeRates: data,
-      value: Number(input.value),
+      value: input.value,
       description: input.description,
     };
-    dispatch(addExpense([newExpense]));
-    // setTotalValue(totalValue + 1);
+    dispatch(addExpense(newExpense));
     setInput({
       value: '',
       description: '',

@@ -23,7 +23,7 @@ export const setCurrencies = (currencies?: any): SetCurrencies => {
   };
 };
 
-export const addExpense = (expense: Expense[]): AddExpense => {
+export const addExpense = (expense: Expense): AddExpense => {
   return {
     type: ADD_EXPENSE,
     payload: expense,

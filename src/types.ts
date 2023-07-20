@@ -13,17 +13,17 @@ export type SaveEmail = {
 
 export type AddExpense = {
   type: typeof ADD_EXPENSE;
-  payload: Expense[];
+  payload: Expense;
 };
 
 export type RemoveExpense = {
   type: typeof REMOVE_EXPENSE;
-  payload: Expense[];
+  payload: Expense;
 };
 
 export type SetCurrencies = {
   type: typeof SET_CURRENCIES;
-  payload: Expense[];
+  payload: Expense;
 };
 
 export type WalletType = {
@@ -35,8 +35,8 @@ export type WalletType = {
 };
 
 export type Expense = {
-  id: number;
-  value: number;
+  id: string;
+  value: string;
   description: string;
   currency: string;
   method: string;
