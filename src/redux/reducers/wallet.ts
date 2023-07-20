@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { ADD_EXPENSE, REMOVE_EXPENSE, SET_CURRENCIES } from '../../types';
+import { ADD_EXPENSE, EDIT_EXPENSE, REMOVE_EXPENSE, SET_CURRENCIES } from '../../types';
 
 const initialState = {
   currencies: [],
@@ -28,6 +28,13 @@ const wallet = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         expenses: state.expenses.filter((expense: any) => expense.id !== action.payload),
+      };
+    case EDIT_EXPENSE:
+      return {
+        ...state,
+        expenses: state.expenses
+          .map((expense: any) => (expense
+            .id === action.payload.id ? action.payload : expense)),
       };
     default:
       return state;

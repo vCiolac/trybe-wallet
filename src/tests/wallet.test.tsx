@@ -4,6 +4,7 @@ import { vi } from 'vitest';
 import mockData from './helpers/mockData';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 import App from '../App';
+import * as actions from '../redux/actions';
 
 describe('Testando toda a aplicação', () => {
   afterEach(() => {
@@ -86,5 +87,35 @@ describe('Testando toda a aplicação', () => {
 
     await userEvent.click(expenseButton);
     expect(totalValue).toBeInTheDocument();
+
+    expect(screen.getByText('Descrição')).toBeInTheDocument();
+    expect(screen.getByText('Tag')).toBeInTheDocument();
+    expect(screen.getByText('Método de pagamento')).toBeInTheDocument();
+    expect(screen.getByText('Valor')).toBeInTheDocument();
+    expect(screen.getByText('Moeda')).toBeInTheDocument();
+    expect(screen.getByText('Câmbio utilizado')).toBeInTheDocument();
+    expect(screen.getByText('Valor convertido')).toBeInTheDocument();
+    expect(screen.getByText('Moeda de conversão')).toBeInTheDocument();
+    expect(screen.getByText('Editar/Excluir')).toBeInTheDocument();
+
+    const tableDescription = screen.getByRole('columnheader', { name: /descrição/i });
+    const editButton = screen.getByRole('button', { name: /editar/i });
+    const removeButton = screen.getByRole('button', { name: /excluir/i });
+
+    expect(tableDescription).toBeInTheDocument();
+    expect(editButton).toBeInTheDocument();
+    expect(removeButton).toBeInTheDocument();
+
+    expect(screen.getByRole('cell', { name: /vamoooo/i })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: /lazer/i })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: /cartão de débito/i })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: /50/i })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: /euro\/real brasileiro/i })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: /5\.13/i })).toBeInTheDocument();
+    expect(screen.getByRole('cell', { name: /256\.34/i })).toBeInTheDocument();
+
+    const deleteButton = screen.getByTestId('delete-btn');
+    await userEvent.click(deleteButton);
+    expect(global.fetch).toHaveBeenCalledTimes(2);
   });
 });

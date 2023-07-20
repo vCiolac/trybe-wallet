@@ -6,9 +6,22 @@ function Table() {
   const expenses = useSelector((state: RootState) => state.wallet.expenses);
   const dispatch: Dispatch = useDispatch();
 
+  // const [editingExpense, setEditingExpense] = useState<Expense | null>(null);
+
   const handleRemoveExpense = (id: string) => {
     dispatch(removeExpense(id));
   };
+
+  // const handleEditButton = (expense: Expense) => {
+  //   setEditingExpense(expense);
+  // };
+
+  // const handleFinishEdit = () => {
+  //   if (editingExpense) {
+  //     dispatch(editExpense(editingExpense));
+  //     setEditingExpense(null);
+  //   }
+  // };
 
   return (
     <table>
@@ -62,7 +75,6 @@ function Table() {
           </tr>
         ))}
       </tbody>
-
     </table>
   );
 }

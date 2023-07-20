@@ -4,6 +4,7 @@ import { ThunkDispatch } from 'redux-thunk';
 export const SAVE_EMAIL = 'SAVE_EMAIL';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 export const SET_CURRENCIES = 'SET_CURRENCIES';
 
 export type SaveEmail = {
@@ -19,6 +20,11 @@ export type AddExpense = {
 export type RemoveExpense = {
   type: typeof REMOVE_EXPENSE;
   payload: string;
+};
+
+export type EditExpense = {
+  type: typeof EDIT_EXPENSE;
+  payload: Expense;
 };
 
 export type SetCurrencies = {

@@ -9,6 +9,8 @@ import {
   Dispatch,
   RemoveExpense,
   REMOVE_EXPENSE,
+  EDIT_EXPENSE,
+  EditExpense,
 } from '../../types';
 
 export const saveEmail = (email: string): SaveEmail => {
@@ -38,6 +40,13 @@ export const removeExpense = (id: string): RemoveExpense => {
     payload: id,
   };
 };
+
+// export const editExpense = (expense: Expense): EditExpense => {
+//   return {
+//     type: EDIT_EXPENSE,
+//     payload: expense,
+//   };
+// };
 
 export const fetchData = async () => {
   const request = await fetch('https://economia.awesomeapi.com.br/json/all');
