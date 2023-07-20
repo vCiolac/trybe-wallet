@@ -7,6 +7,8 @@ import {
   ADD_EXPENSE,
   SetCurrencies,
   Dispatch,
+  RemoveExpense,
+  REMOVE_EXPENSE,
 } from '../../types';
 
 export const saveEmail = (email: string): SaveEmail => {
@@ -27,6 +29,13 @@ export const addExpense = (expense: Expense): AddExpense => {
   return {
     type: ADD_EXPENSE,
     payload: expense,
+  };
+};
+
+export const removeExpense = (id: string): RemoveExpense => {
+  return {
+    type: REMOVE_EXPENSE,
+    payload: id,
   };
 };
 

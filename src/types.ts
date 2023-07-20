@@ -18,7 +18,7 @@ export type AddExpense = {
 
 export type RemoveExpense = {
   type: typeof REMOVE_EXPENSE;
-  payload: Expense;
+  payload: string;
 };
 
 export type SetCurrencies = {
