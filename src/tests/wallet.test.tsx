@@ -59,6 +59,7 @@ describe('Testando toda a aplicação', () => {
     const currencies = screen.getByRole('combobox', { name: /moeda:/i });
     const method = screen.getByRole('combobox', { name: /método de pagamento:/i });
     const tag = screen.getByRole('combobox', { name: /categoria:/i });
+    const totalValue = screen.getByTestId('total-field');
 
     expect(valueInput).toBeInTheDocument();
     expect(description).toBeInTheDocument();
@@ -68,8 +69,8 @@ describe('Testando toda a aplicação', () => {
 
     await userEvent.selectOptions(currencies, 'USD');
     expect(currencies).toHaveValue('USD');
-    await userEvent.selectOptions(currencies, 'BTC');
-    expect(currencies).toHaveValue('BTC');
+    await userEvent.selectOptions(currencies, 'EUR');
+    expect(currencies).toHaveValue('EUR');
 
     await userEvent.selectOptions(method, 'Cartão de débito');
     expect(method).toHaveValue('Cartão de débito');
@@ -82,5 +83,8 @@ describe('Testando toda a aplicação', () => {
 
     await userEvent.type(description, 'Vamoooo');
     expect(description).toHaveValue('Vamoooo');
+
+    await userEvent.click(expenseButton);
+    expect(totalValue).toBeInTheDocument();
   });
 });
